@@ -1,101 +1,96 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Particles from "react-tsparticles";
+import type { Container, Engine } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
 
 const AnimatedBackground: React.FC = () => {
-    const particlesInit = async (main: any) => {
-        await loadFull(main);
-    };
+    const particlesInit = useCallback(async (engine: Engine) => {
+        console.log("Initializing tsParticles");
+        await loadFull(engine);
+    }, []);
+
+    const particlesLoaded = useCallback(async (container: Container | undefined) => {
+        console.log("tsParticles loaded", container);
+    }, []);
+
+    console.log("Rendering AnimatedBackground component");
 
     return (
         <Particles
             id="tsparticles"
             init={particlesInit}
+            loaded={particlesLoaded}
             options={{
-                fullScreen: {
-                    enable: true,
-                    zIndex: -1
+                background: {
+                    color: {
+                        value: "#0d47a1",
+                    },
+                },
+                fpsLimit: 120,
+                interactivity: {
+                    events: {
+                        onClick: {
+                            enable: true,
+                            mode: "push",
+                        },
+                        onHover: {
+                            enable: true,
+                            mode: "repulse",
+                        },
+                        resize: true,
+                    },
+                    modes: {
+                        push: {
+                            quantity: 4,
+                        },
+                        repulse: {
+                            distance: 200,
+                            duration: 0.4,
+                        },
+                    },
                 },
                 particles: {
+                    color: {
+                        value: "#ffffff",
+                    },
+                    links: {
+                        color: "#ffffff",
+                        distance: 150,
+                        enable: true,
+                        opacity: 0.5,
+                        width: 1,
+                    },
+                    collisions: {
+                        enable: true,
+                    },
+                    move: {
+                        direction: "none",
+                        enable: true,
+                        outModes: {
+                            default: "bounce",
+                        },
+                        random: false,
+                        speed: 6,
+                        straight: false,
+                    },
                     number: {
-                        value: 80,
                         density: {
                             enable: true,
-                            value_area: 800
-                        }
-                    },
-                    color: {
-                        value: "#ffffff"
-                    },
-                    shape: {
-                        type: "circle"
+                            area: 800,
+                        },
+                        value: 80,
                     },
                     opacity: {
                         value: 0.5,
-                        random: true,
-                        anim: {
-                            enable: true,
-                            speed: 1,
-                            opacity_min: 0.1,
-                            sync: false
-                        }
+                    },
+                    shape: {
+                        type: "circle",
                     },
                     size: {
-                        value: 3,
-                        random: true,
-                        anim: {
-                            enable: true,
-                            speed: 2,
-                            size_min: 0.1,
-                            sync: false
-                        }
+                        value: { min: 1, max: 5 },
                     },
-                    line_linked: {
-                        enable: true,
-                        distance: 150,
-                        color: "#ffffff",
-                        opacity: 0.4,
-                        width: 1
-                    },
-                    move: {
-                        enable: true,
-                        speed: 2,
-                        direction: "none",
-                        random: false,
-                        straight: false,
-                        out_mode: "out",
-                        bounce: false,
-                        attract: {
-                            enable: false,
-                            rotateX: 600,
-                            rotateY: 1200
-                        }
-                    }
                 },
-                interactivity: {
-                    detect_on: "canvas",
-                    events: {
-                        onhover: {
-                            enable: true,
-                            mode: "repulse"
-                        },
-                        onclick: {
-                            enable: true,
-                            mode: "push"
-                        },
-                        resize: true
-                    },
-                    modes: {
-                        repulse: {
-                            distance: 100,
-                            duration: 0.4
-                        },
-                        push: {
-                            particles_nb: 4
-                        }
-                    }
-                },
-                retina_detect: true
+                detectRetina: true,
             }}
         />
     );
