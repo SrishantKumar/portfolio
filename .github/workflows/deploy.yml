@@ -23,6 +23,7 @@ jobs:
           npm run build
           npm run export
           touch out/.nojekyll
+          ls -R out
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.1
@@ -30,3 +31,8 @@ jobs:
           branch: gh-pages
           folder: out
           clean: true
+
+      - name: Verify Deployment
+        run: |
+          git checkout gh-pages
+          ls -R
