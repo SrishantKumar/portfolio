@@ -29,23 +29,35 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      await emailjs.send(
-        'service_3jehxou', // Replace with your EmailJS service ID
-        'template_qis3dzp', // Replace with your EmailJS template ID
+      console.log('Sending email with the following data:', {
+        serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        userId: process.env.NEXT_PUBLIC_EMAILJS_USER_ID,
+        formData: formData
+      });
+
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         {
           to_email: 'Srishant054@gmail.com',
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
         },
-        'YR_M1cbrPcP1oyNiT' // Replace with your EmailJS user ID
+        process.env.NEXT_PUBLIC_EMAILJS_USER_ID!
       );
 
+      console.log('Email sent successfully:', result);
       alert('Message sent successfully!');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       console.error('Error sending email:', error);
-      alert('Failed to send message. Please try again later.');
+      if (error instanceof Error) {
+        alert(`Failed to send message. Error: ${error.message}`);
+      } else {
+        alert('Failed to send message. An unknown error occurred.');
+      }
     } finally {
       setIsSubmitting(false);
     }
