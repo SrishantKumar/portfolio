@@ -23,6 +23,13 @@ const projects = [
     description: "Designed logo for IIIT Agartala Gymkahna Body & QNITA 24",
     image: "https://i.imgur.com/n62IlKB.png",
     link: "https://www.behance.net/gallery/210655633/LOGO-DESIGN"
+  },
+  {
+    title: "Merch Design",
+    description: "Created custom merchandise designs for various brands and events.",
+    image: "https://imgur.com/fYpODzt", // You'll need to add this image to your public folder
+    technologies: ["Adobe Illustrator", "Photoshop", "Figma"],
+    link: "#" // Replace with actual project link if available
   }
 ];
 
