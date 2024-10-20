@@ -9,7 +9,7 @@ const Header = () => {
           <div className="flex items-center space-x-2">
             <div className="relative w-12 h-12 overflow-hidden rounded-full">
               <Image
-                src="/profile.png"
+                src="https://srishantkumar.github.io/portfolio/publicprofile.png"
                 alt="Profile"
                 width={48}
                 height={48}
