@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { GithubIcon, LinkedinIcon, TwitterIcon } from 'lucide-react';
+import { GithubIcon, LinkedinIcon, Mail, Phone, TwitterIcon } from 'lucide-react';
 import emailjs from 'emailjs-com';
 
 const Contact = () => {
@@ -121,7 +121,7 @@ const Contact = () => {
                 </a>
               </div>
               <div className="flex items-center space-x-2">
-                <WhatsApp className="w-6 h-6" />
+                <Phone className="w-6 h-6" />
                 <a href="https://wa.me/919471649526" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                   WhatsApp Me
                 </a>
