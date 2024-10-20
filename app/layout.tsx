@@ -16,6 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <base href="/portfolio/" />
+      </head>
       <body className={inter.className}>
         <ClientLayout>{children}</ClientLayout>
       </body>

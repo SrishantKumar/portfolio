@@ -31,12 +31,10 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm ci
+          npm run build
           npm run export
-
-      - name: Prepare for deployment
-        run: |
+          cp public/404.html out/
           touch out/.nojekyll
-          cp index.html out/ || true
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
