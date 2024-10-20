@@ -65,66 +65,70 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-20 bg-background">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.h2
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl font-bold text-center mb-8 text-primary"
-        >
-          Get in Touch
-        </motion.h2>
-        <motion.form
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          onSubmit={handleSubmit}
-          className="space-y-6"
-        >
-          <Input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-          <Input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <Textarea
-            name="message"
-            placeholder="Your Message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            className="min-h-[150px]"
-          />
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
-            {isSubmitting ? 'Sending...' : 'Send Message'}
-          </Button>
-        </motion.form>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-12 flex justify-center space-x-6"
-        >
-          <a href="#" className="text-primary hover:text-primary/80 transition-colors">
-            <GithubIcon className="h-6 w-6" />
-          </a>
-          <a href="#" className="text-primary hover:text-primary/80 transition-colors">
-            <LinkedinIcon className="h-6 w-6" />
-          </a>
-          <a href="#" className="text-primary hover:text-primary/80 transition-colors">
-            <TwitterIcon className="h-6 w-6" />
-          </a>
-        </motion.div>
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-10">Contact Me</h2>
+        <div className="flex flex-col md:flex-row gap-10">
+          <div className="flex-1">
+            <motion.form
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="space-y-6"
+              onSubmit={handleSubmit}
+            >
+              <Input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+              <Input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+              <Textarea
+                name="message"
+                placeholder="Your Message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                className="min-h-[150px]"
+              />
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </Button>
+            </motion.form>
+          </div>
+          <div className="flex-1">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="space-y-6"
+            >
+              <h3 className="text-2xl font-semibold mb-4">Get in Touch</h3>
+              <p className="mb-4">Feel free to reach out to me through any of these channels:</p>
+              <div className="flex items-center space-x-2">
+                <Mail className="w-6 h-6" />
+                <a href="mailto:Srishant054@gmail.com" className="text-primary hover:underline">
+                  Srishant054@gmail.com
+                </a>
+              </div>
+              <div className="flex items-center space-x-2">
+                <WhatsApp className="w-6 h-6" />
+                <a href="https://wa.me/919471649526" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  WhatsApp Me
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
